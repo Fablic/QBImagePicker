@@ -309,16 +309,16 @@
         if (UIDeviceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation])) {
             return CGSizeMake(202.f, 202.f);
         }
-        return CGSizeMake(151, 151);
+        return CGSizeMake(151.f, 151.f);
     }
 
     CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-    if (screenHeight == 667) {
+    if (screenHeight == 667.f) {
         return CGSizeMake(91.f, 91.f);
-    } else if (screenHeight == 736) {
+    } else if (screenHeight == 736.f) {
         return CGSizeMake(101.f, 101.f);
     }
-    return CGSizeMake(77.5, 77.5);
+    return CGSizeMake(77.5f, 77.5f);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
