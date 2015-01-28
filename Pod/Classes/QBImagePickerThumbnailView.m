@@ -71,7 +71,8 @@
     _assetsGroup = assetsGroup;
     
     // Extract three thumbnail images
-    NSIndexSet *indexes = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, MIN(3, assetsGroup.numberOfAssets))];
+    NSIndexSet *indexes = [[NSIndexSet alloc] initWithIndex:[assetsGroup numberOfAssets] - 1];
+
     NSMutableArray *thumbnailImages = [NSMutableArray array];
     [assetsGroup enumerateAssetsAtIndexes:indexes
                                   options:0
