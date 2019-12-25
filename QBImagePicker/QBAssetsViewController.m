@@ -109,7 +109,7 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         // dispatching to the main thread waits one run loop until the frame is update and the layout is complete
         dispatch_async(dispatch_get_main_queue(), ^{
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:(self.fetchResult.count - 1) inSection:0];
-            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
         });
     }
 }
