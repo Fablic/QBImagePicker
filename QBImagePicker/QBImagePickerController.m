@@ -58,6 +58,19 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    // 呼び出し元でNOをセットしていた場合に一番古いファイルへスクロールする不具合があるため、ImagePicker内でのみ有効化する
+    [[UINavigationBar appearance] setTranslucent:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UINavigationBar appearance] setTranslucent:NO];
+}
+
 - (void)setUpAlbumsViewController
 {
     // Add QBAlbumsViewController as a child
