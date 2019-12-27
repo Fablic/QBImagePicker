@@ -108,8 +108,12 @@ static CGSize CGSizeScale(CGSize size, CGFloat scale) {
         // when presenting as a .FormSheet on iPad, the frame is not correct until just after viewWillAppear:
         // dispatching to the main thread waits one run loop until the frame is update and the layout is complete
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:(self.fetchResult.count - 1) inSection:0];
-            [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+            CGFloat contentHeight = self.collectionView.contentSize.height;
+            CGFloat frameHeight = self.collectionView.frame.size.height + self.collectionView.contentInset.bottom;
+            if (contentHeight > frameHeight) {
+                CGPoint offset = CGPointMake(self.collectionView.contentOffset.x, contentHeight - frameHeight);
+                [self.collectionView setContentOffset:offset animated:NO];
+            }
         });
     }
 }
